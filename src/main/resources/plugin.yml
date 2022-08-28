@@ -1,12 +1,12 @@
-name: ExamplePonderPlugin
+name: Bookshelvesyoucanuse
 version: '${project.version}'
-main: preponderous.exampleponderplugin.ExamplePonderPlugin
+main: Repohobo.BYCU.Bookshelvesyoucanuse
 api-version: 1.13
 
 commands:
-  exampleponderplugin:
-  epp:
+  BookshelvesYouCanUse:
+  BYCU:
 
 permissions:
-  epp.help:
+  BYCU.help:
     default: true

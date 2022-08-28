@@ -1,4 +1,4 @@
-package preponderous.exampleponderplugin.services;
+package Repohobo.BYCU.services;
 
 /*
     To add a new config option, the following methods must be altered:
@@ -10,16 +10,16 @@ package preponderous.exampleponderplugin.services;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
-import preponderous.exampleponderplugin.ExamplePonderPlugin;
+import Repohobo.BYCU.Bookshelvesyoucanuse;
 
 /**
  * @author Daniel McCoy Stephenson
  */
 public class ConfigService {
-    private final ExamplePonderPlugin plugin;
+    private final Bookshelvesyoucanuse plugin;
     private boolean altered = false;
 
-    public ConfigService(ExamplePonderPlugin plugin) {
+    public ConfigService(Bookshelvesyoucanuse plugin) {
         this.plugin = plugin;
     }
 
