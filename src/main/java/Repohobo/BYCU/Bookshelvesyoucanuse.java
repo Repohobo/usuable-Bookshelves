@@ -1,10 +1,13 @@
 package Repohobo.BYCU;
 
+import Repohobo.BYCU.Objects.Bookshelfinventory;
 import Repohobo.BYCU.commands.DefaultCommand;
 import Repohobo.BYCU.commands.HelpCommand;
 import Repohobo.BYCU.data.TemporaryData;
 import Repohobo.BYCU.eventhandlers.InteractHandler;
+import Repohobo.BYCU.exception.Bookshelfinventorynotfoundexception;
 import Repohobo.BYCU.services.ConfigService;
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.event.Listener;
@@ -25,6 +28,7 @@ public final class Bookshelvesyoucanuse extends PonderBukkitPlugin {
     private final CommandService commandService = new CommandService(getPonder());
     private final ConfigService configService = new ConfigService(this);
     private TemporaryData temporaryData = new TemporaryData();
+    private ArrayList<Bookshelfinventory> bookshelfinventories = new ArrayList<>();
 
     /**
      * This runs when the server starts.
@@ -90,6 +94,20 @@ public final class Bookshelvesyoucanuse extends PonderBukkitPlugin {
      */
     public boolean isDebugEnabled() {
         return configService.getBoolean("debugMode");
+    }
+
+    public ArrayList<Bookshelfinventory> getBookshelfinventories(){
+        return bookshelfinventories;
+    }
+
+    public Bookshelfinventory getBookshelfInventory(Location location) throws Bookshelfinventorynotfoundexception {
+        for (Bookshelfinventory bookshelf : bookshelfinventories) {
+            if (bookshelf.getX() == location.getBlockX() && bookshelf.getY() == location.getBlockY() && bookshelf.getZ() == location.getBlockZ() && bookshelf.getWorldname() .equals(location.getWorld().getName())) {
+                return bookshelf;
+
+            }
+        }
+        throw new Bookshelfinventorynotfoundexception();
     }
 
     private void initializeConfig() {
