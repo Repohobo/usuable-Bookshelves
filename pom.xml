@@ -6,7 +6,7 @@
 
     <groupId>Repohobo</groupId>
     <artifactId>Bookshelvesyoucanuse</artifactId>
-    <version>1.1-ALPHA</version>
+    <version>0.0.1</version>
     <packaging>jar</packaging>
 
     <name>Bookshelvesyoucanuse</name>

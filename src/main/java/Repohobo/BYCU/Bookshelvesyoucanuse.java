@@ -2,7 +2,8 @@ package Repohobo.BYCU;
 
 import Repohobo.BYCU.commands.DefaultCommand;
 import Repohobo.BYCU.commands.HelpCommand;
-import Repohobo.BYCU.eventhandlers.JoinHandler;
+import Repohobo.BYCU.data.TemporaryData;
+import Repohobo.BYCU.eventhandlers.InteractHandler;
 import Repohobo.BYCU.services.ConfigService;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -23,6 +24,7 @@ public final class Bookshelvesyoucanuse extends PonderBukkitPlugin {
     private final String pluginVersion = "v" + getDescription().getVersion();
     private final CommandService commandService = new CommandService(getPonder());
     private final ConfigService configService = new ConfigService(this);
+    private TemporaryData temporaryData = new TemporaryData();
 
     /**
      * This runs when the server starts.
@@ -116,7 +118,8 @@ public final class Bookshelvesyoucanuse extends PonderBukkitPlugin {
     private void registerEventHandlers() {
         EventHandlerRegistry eventHandlerRegistry = new EventHandlerRegistry();
         ArrayList<Listener> listeners = new ArrayList<>(Arrays.asList(
-                new JoinHandler()
+
+                new InteractHandler(temporaryData, this)
         ));
         eventHandlerRegistry.registerEventHandlers(listeners, this);
     }
