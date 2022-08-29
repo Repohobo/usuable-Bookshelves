@@ -1,6 +1,7 @@
 package Repohobo.BYCU.eventhandlers;
 
 import Repohobo.BYCU.Bookshelvesyoucanuse;
+import Repohobo.BYCU.Objects.Bookshelfinventory;
 import Repohobo.BYCU.data.TemporaryData;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -37,6 +38,8 @@ public class InteractHandler implements Listener {
 
         if (block.getType() == Material.BOOKSHELF) {
             player.sendMessage("You Rummage through the bookshelf!");
+            Bookshelfinventory inventory =new Bookshelfinventory(block.getLocation());
+            player.openInventory(inventory.getInventory());
             temporaryData.addplayertoplayersoninteractcooldown(player);
             removeplayerfromcooldownlistwithdelay(player);
 
